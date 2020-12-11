@@ -31,33 +31,49 @@ function App() {
     let month = months[d.getMonth()];
     let year = d.getFullYear();
 
-    return `${day} ${date} ${month} ${year}`
+    return `${day} ${date} ${month} de ${year}`
   }
 
-
   return (
-    <div className="app">
+    <div className="app thunderstorm">
       <main>
-        <div className="search-box">
-          <input type="text" className="search-bar" placeholder="Pesquisar..."
-            onChange={e => setQuery(e.target.value)}
-            value={query}
-            onKeyPress={search}
-          />
+        <div className="container">
+          <div className="title">
+            COMO ESTÁ O CLIMA?
         </div>
-        <div>
-          <div className="location-box">
-            <div className="location">{weather.name}</div>
-            <div className="date">{dateBuilder(new Date())}</div>
+          <div className="search-box">
+            <input type="text" className="search-bar" placeholder="Insira a cidade..."
+              onChange={e => setQuery(e.target.value)}
+              value={query}
+              onKeyPress={search}
+            />
           </div>
-          <div className="weather-box">
-            <div className="temp">
-              {weather.main.temp}ºC
+          {(typeof weather.main != "undefined") ? (
+            <div>
+              <div className="location-box">
+                <div className="location">{weather.name}</div>
+                <div className="date">{dateBuilder(new Date())}</div>
+              </div>
+              <div className="weather-box">
+                <div className="temp">
+                  {Math.floor(weather.main.temp)}ºC
             </div>
-            <div className="weather">
-              Limpo
-          </div>
-          </div>
+                <div className="container-var">
+                  <div className="min-temp">
+                    MIN
+                  <h1>{Math.floor(weather.main.temp_min)}ºc</h1>
+                  </div>
+                  <div className="max-temp">
+                    MAX
+                  <h1>{Math.floor(weather.main.temp_max)}ºc</h1>
+                  </div>
+                </div>
+                <div className="weather">
+                  {weather.weather[0].main}
+                </div>
+              </div>
+            </div>
+          ) : ('')}
         </div>
       </main>
     </div>
