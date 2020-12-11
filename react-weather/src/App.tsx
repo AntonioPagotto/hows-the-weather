@@ -18,7 +18,6 @@ function App() {
         .then(results =>
           setWeather(results));
       setQuery('');
-      console.log(weather)
     }
   }
 
@@ -50,7 +49,7 @@ function App() {
       <main>
         <div className="container">
           <div className="title">
-            HOWS THE WEATHER?
+            HOWS <span className="primary-color">THE</span> WEATHER?
         </div>
           <div className="search-box">
             <input type="text" className="search-bar" placeholder="Insira a cidade..."
@@ -70,11 +69,11 @@ function App() {
             </div>
                 <div className="container-var">
                   <div className="min-temp">
-                    MIN
+                    <p className="primary-color">MIN</p>
                   <h1>{Math.floor(weather.main.temp_min)}ºc</h1>
                   </div>
                   <div className="max-temp">
-                    MAX
+                  <p className="primary-color">MAX</p>
                   <h1>{Math.floor(weather.main.temp_max)}ºc</h1>
                   </div>
                 </div>
