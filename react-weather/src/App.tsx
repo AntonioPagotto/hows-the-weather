@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Weather } from './models/Weather';
 
 const api = {
@@ -9,7 +9,7 @@ const api = {
 function App() {
 
   const [query, setQuery] = useState('');
-  const [weather, setWeather] = useState<Weather | any>('');
+  const [weather, setWeather] = useState<Weather | undefined>(undefined);
 
   const search = (evt: any) => {
     if (evt.key === "Enter") {
@@ -21,6 +21,50 @@ function App() {
       console.log(weather)
     }
   }
+
+  const renderBg = (weather: any) => {
+    switch (weather?.weather[0]?.main) {
+      case undefined:
+        return 'app';
+      case 'Thunderstorm':
+        return 'app thunderstorm';
+      case 'Drizzle':
+        return 'app thunderstorm';
+      case 'Rain':
+        return 'app rain';
+      case 'Snow':
+        return 'app snow';
+      case 'Mist':
+        return 'app mist';
+      case 'Clear':
+        return 'app bg';
+      case 'Clouds':
+        return 'app broken';
+      default:
+        return 'app';
+    }
+  }
+
+  // switch(background) {
+
+  //   case 'undefined':
+  //     background = 'app';
+  //     break;
+
+  //   case 'Clouds':
+  //     background = 'app.shower';
+  //     break;
+
+  //   default:
+  //     background = 'app';
+
+  // (typeof weather.weather[0].id == 800) ? 'app' : ((weather.weather[0].id > 800) ? 'app.broken'
+  //   : weather.weather[0].id >= 700 && weather.weather[0].id < 800 ? 'app.mist'
+  //     : weather.weather[0].id >= 600 && weather.weather[0].id < 700 ? 'app.snow'
+  //       : weather.weather[0].id >= 500 && weather.weather[0].id < 600 ? 'app.shower'
+  //         : weather.weather[0].id >= 300 && weather.weather[0].id <= 321 ? 'app.rain'
+  //           : weather.weather[0].id >= 200 && weather.weather[0].id <= 232 ? 'app.thunderstom'
+  //             : 'app'
 
   const dateBuilder = (d: any) => {
     let months = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
@@ -35,7 +79,7 @@ function App() {
   }
 
   return (
-    <div className="app thunderstorm">
+    <div className={renderBg(weather)}>
       <main>
         <div className="container">
           <div className="title">
@@ -48,7 +92,7 @@ function App() {
               onKeyPress={search}
             />
           </div>
-          {(typeof weather.main != "undefined") ? (
+          {(weather?.main !== undefined) ? (
             <div>
               <div className="location-box">
                 <div className="location">{weather.name}</div>
@@ -69,7 +113,7 @@ function App() {
                   </div>
                 </div>
                 <div className="weather">
-                  {weather.weather[0].main}
+                  {(weather !== undefined)? weather?.weather[0].main : ''}
                 </div>
               </div>
             </div>

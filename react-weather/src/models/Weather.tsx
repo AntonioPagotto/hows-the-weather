@@ -1,3 +1,4 @@
+import { intWeather } from "./intWeather";
 import { Main } from "./Main";
 
 export interface Weather{
@@ -5,4 +6,5 @@ export interface Weather{
     id: number,
     main: Main,
     visibility: number,
+    weather: intWeather[];
   }
