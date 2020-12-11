@@ -16,7 +16,10 @@
     "typescript": "^4.1.2",
     "web-vitals": "^0.2.4"
   },
+  "homepage": "https://antoniopagotto.github.io/hows-the-weather/",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
