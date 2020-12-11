@@ -48,8 +48,8 @@ body {
 }
 
 main {
-  background: rgb(6,150,156);
-  background: linear-gradient(180deg, rgba(6,150,156,0.5746673669467788) 0%, rgba(3,69,71,0.6418942577030813) 74%);
+  background: rgb(65,65,65);
+  background: linear-gradient(180deg, rgba(65,65,65,0.8407738095238095) 0%, rgba(28,28,28,0.8743872549019608) 100%);
   min-height: 100vh;
   padding: 20px;
 }
@@ -80,12 +80,8 @@ main {
   background: none;
   border: none;
   outline: none;
-
   background: #ffffffb4;
   border-radius: 10px;
-  margin-top: -25px;
-
-
   font-size: 20px;
   transition: 0.5s;
 }
@@ -98,19 +94,10 @@ main {
 
 .location-box .location {
   color: #fff;
-  font-size: 32px;
-  font-weight: 500;
+  font-size: 45px;
+  font-weight: 600;
   text-align: center;
   text-shadow: 3px 3px rgba(36, 41, 57, 0.521);
-}
-
-.location-box .date{
-  color: #fff;
-  font-size: 20px;
-  font-weight: 300;
-  font-style: italic;
-  text-align: center;
-  text-shadow: 2px 2px rgba(36, 41, 57, 0.521);
 }
 
 .weather-box{
@@ -120,29 +107,34 @@ main {
 .weather-box .temp {
   position: relative;
   display: inline-block;
+  width: 60%;
   margin: 30px auto;
-  background-color: rgba(36, 41, 57, 0.521);
-  border-radius: 16px;
-
-  color: #fff;
   padding: 15px 25px;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.253);
+  box-shadow: 0 0 10px  rgba(36, 41, 57, 0.521);
+  color: rgb(224, 224, 224);
   font-size: 102px;
   font-weight: 900;
-
-  text-shadow: 3px 6px rgba(36, 41, 57, 0.521);
+  text-shadow: 3px 6px rgba(59, 59, 59, 0.521);
   text-align: center;
-  box-shadow: 3px 6px rgba(36, 41, 57, 0.521);
 }
 
-.weather-box .weather{
-  color: #fff;
-  font-size: 48px;
-  font-weight: 700;
-  text-shadow: 3px 3px rgba(36, 41, 57, 0.521);
+.weather{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  margin: auto;
+  padding: 10px;
+  background: #ffffffb4;
+  border-radius: 10px;
+  font-size: 30px;
+  transition: 0.5s;
 }
 
 .container-var{
-  max-width: 200px;
+  max-width: 100px;
   margin: auto;
   display: flex;
   justify-content: center;

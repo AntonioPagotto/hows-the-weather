@@ -45,45 +45,12 @@ function App() {
     }
   }
 
-  // switch(background) {
-
-  //   case 'undefined':
-  //     background = 'app';
-  //     break;
-
-  //   case 'Clouds':
-  //     background = 'app.shower';
-  //     break;
-
-  //   default:
-  //     background = 'app';
-
-  // (typeof weather.weather[0].id == 800) ? 'app' : ((weather.weather[0].id > 800) ? 'app.broken'
-  //   : weather.weather[0].id >= 700 && weather.weather[0].id < 800 ? 'app.mist'
-  //     : weather.weather[0].id >= 600 && weather.weather[0].id < 700 ? 'app.snow'
-  //       : weather.weather[0].id >= 500 && weather.weather[0].id < 600 ? 'app.shower'
-  //         : weather.weather[0].id >= 300 && weather.weather[0].id <= 321 ? 'app.rain'
-  //           : weather.weather[0].id >= 200 && weather.weather[0].id <= 232 ? 'app.thunderstom'
-  //             : 'app'
-
-  const dateBuilder = (d: any) => {
-    let months = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
-    let days = ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'];
-
-    let day = days[d.getDay()];
-    let date = d.getDate();
-    let month = months[d.getMonth()];
-    let year = d.getFullYear();
-
-    return `${day} ${date} ${month} de ${year}`
-  }
-
   return (
     <div className={renderBg(weather)}>
       <main>
         <div className="container">
           <div className="title">
-            COMO ESTÁ O CLIMA?
+            HOWS THE WEATHER?
         </div>
           <div className="search-box">
             <input type="text" className="search-bar" placeholder="Insira a cidade..."
@@ -96,7 +63,6 @@ function App() {
             <div>
               <div className="location-box">
                 <div className="location">{weather.name}</div>
-                <div className="date">{dateBuilder(new Date())}</div>
               </div>
               <div className="weather-box">
                 <div className="temp">
@@ -113,7 +79,10 @@ function App() {
                   </div>
                 </div>
                 <div className="weather">
-                  {(weather !== undefined)? weather?.weather[0].main : ''}
+                  <h4>
+                    {(weather !== undefined) ? weather?.weather[0].main : ''}
+                  </h4>
+                  <img src={`http://openweathermap.org/img/wn/${weather?.weather[0].icon}@2x.png`} />
                 </div>
               </div>
             </div>
